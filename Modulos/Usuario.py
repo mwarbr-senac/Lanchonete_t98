@@ -1,3 +1,4 @@
+from Modulos.Telas import Telas
 class Usuario:
   """ Documentação da Classe no Python
       Funções do usuário padrão da Lanchonete.
@@ -19,9 +20,13 @@ class Usuario:
   # Método Construtor: executado ao instanciar a classe
   # self refere-se à instância da classe
   def __init__( self ):
-
+    
+    # chamando a tela de entrada que está no módulo Telas.py
+    entrada = Telas() # instância da classe Telas
+    entrada.entradaSistema()
+    
     # chamando o método logar da classe
-    self.logar()
+    # self.logar()
 
   def logar ( self ):
 
@@ -43,12 +48,6 @@ class Usuario:
   def exibirInfosUsuario( self ):
     print( " Os dados do usuário são: \n Nome: \n Login: " )
     
-  def mostraMensagens( self, mensagem ):
-    """ Exibe as mensagens enviadas pelo parâmetro.
-    """
-    print( f"---------------------- \n" )
-    print( f"|  {mensagem}        |\n ")
-    print( f"---------------------- \n" )
 
 # Uma classe convencional precisa ser Instanciada para que seus objetos possam ser usados.
 # Instanciar uma classe é colocar uma cópia ( instância ) em uma variável ( objeto )
