@@ -26,7 +26,7 @@ class Usuario:
     entrada.entradaSistema()
     
     # chamando o método logar da classe
-    # self.logar()
+    self.logar()
 
   def logar ( self ):
 

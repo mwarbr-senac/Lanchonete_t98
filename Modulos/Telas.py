@@ -1,3 +1,7 @@
+#importando a classe Time do próprio Python
+import time 
+import os
+
 class Telas:
     
     def entradaSistema( self ):
@@ -9,11 +13,12 @@ class Telas:
         
         self.esperaLimpa()
         
-    def esperaLimpa( self, tempo ):
-        # esperar Xsegundos
+    def esperaLimpa( self, tempo = 3 ):
+        # esperar - delay de Xsegundos
         time.sleep( tempo )
-        
+
         # limpa a tela
+        self.limpaConsole()
     
     def saidaSistema( self ):
         print( f"+--------------------------------------------------+" )
@@ -30,4 +35,21 @@ class Telas:
         print( f"+--------------------------------------------------+" )
     
     def limpaConsole( self ):
-        print("")  
+        
+        if os.name == "nt": # windows nt - Linux posix - Mac darwin 
+            os.system( "cls" )
+        else: 
+            os.system( "clear" )
+            
+        # if os.name == "nt": # windows nt - Linux posix - Mac darwin 
+        #     os.system( "cls" )
+        # elif os.name == "darwin": 
+        #     os.system( "clear" )
+        # else:
+        #     os.system( "clear" )
+        
+        # tipoSistema = os.name
+        # switch( tipoSistema ):
+        #     case "nt":
+        #         os.system("cls")            
+        #         break:
