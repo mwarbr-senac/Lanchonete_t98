@@ -6,7 +6,3 @@ from Modulos.Usuario import Usuario
 
 usuario = Usuario()
 
-
-
-
-

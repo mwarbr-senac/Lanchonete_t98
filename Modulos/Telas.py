@@ -41,15 +41,10 @@ class Telas:
         else: 
             os.system( "clear" )
             
-        # if os.name == "nt": # windows nt - Linux posix - Mac darwin 
-        #     os.system( "cls" )
-        # elif os.name == "darwin": 
-        #     os.system( "clear" )
-        # else:
-        #     os.system( "clear" )
-        
-        # tipoSistema = os.name
-        # switch( tipoSistema ):
-        #     case "nt":
-        #         os.system("cls")            
-        #         break:
+    def exibeMenu( self ):
+        print( f"+--------------------------------------------------+" )
+        print( f"|                            Bem Vindo { usuario } |" )
+        print( f"|   ** Menu - Escolha uma Opção:                   |" )
+        print( f"|   1 - Cadastrar                                  |" )
+        print( f"|   2 - Listar                                     |" )
+        print( f"+--------------------------------------------------+" )
