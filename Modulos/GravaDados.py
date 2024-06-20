@@ -8,11 +8,11 @@ class GravaDados:
         "nomeUsuario" : "João dos Santos",
     }
     
-    def salvaDados( self  ):
-        # open( nomeArquivo, modoAbertura) é uma função do python3 que lê e escreve arquivos 
+    # open( nomeArquivo, modoAbertura) é uma função do python3 que lê e escreve arquivos 
         # w - write - escrita
         # r - read - leitura
-        # r+ - escrita/leitura
+        # r+ - escrita/leitura    
+    def salvaDados( self  ):
         
         with open( "Lanchonete\\Modulos\\dados.txt", "w") as dados:
             

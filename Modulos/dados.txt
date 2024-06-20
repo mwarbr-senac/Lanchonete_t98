@@ -1,0 +1,5 @@
+{
+    "loginArmazenado": "cliente",
+    "senhaArmazenada": "1234",
+    "nomeUsuario": "Jo\u00e3o dos Santos"
+}
