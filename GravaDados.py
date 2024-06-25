@@ -1,10 +1,13 @@
 import builtins
 import json # JavaScript Object Notation
+# importando o módulo de telas 
+from Modulos.Telas import Telas
 
-class Testes:
+class GravaDados:
     
-    # atributo/variável vazio
+    # atributo/variável vazio (GLOBAL)
     usuariosJson = None
+    tela = Telas()
     
     def __init__(self):
         self.carregaJson()
@@ -40,13 +43,32 @@ class Testes:
             json.dump( usuariosCadastrados, dados  )
             # fecha o arquivo
             dados.close()
-            
-teste = Testes()
 
-novoUsuario = {
-    "loginArmazenado" : "maycon",
-    "senhaArmazenada" : "1234",
-    "nomeUsuario" : "Maycon Guerra"
-}
+            # exibir a tela da classe Telas()
+            self.tela.mensagensSistema( "Cadastro Realizado com sucesso!!" )
 
-teste.cadastraUsuario( novoUsuario )
+    def recuperaUsuario( self, buscar ):
+        # busca o item do arquivo json escolhido
+        # a programação executa apenas um item por vez, para processar mais itens usamos um laço de repetição - for
+        for i, item in enumerate( self.usuariosJson  ):
+            # vamos comparar o nome de usuário para o filtro
+            if item["loginArmazenado"] == buscar:
+                return item
+            else:
+                # se não achou nada retorna a mensagem
+                self.tela.mensagensSistema("Nenhum usuário encontrado!")
+                break
+
+# teste = Testes()
+
+# escolhido = teste.recuperaUsuario( " cliente " )
+
+# print( escolhido )
+
+#  novoUsuario = {
+#     "loginArmazenado" : "maycon",
+#     "senhaArmazenada" : "1234",
+#     "nomeUsuario" : "Maycon Guerra"
+# }
+
+#teste.cadastraUsuario( novoUsuario )

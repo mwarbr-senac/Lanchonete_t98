@@ -1,4 +1,6 @@
 from Modulos.Telas import Telas
+from GravaDados import GravaDados
+
 class Usuario:
   """ Documentação da Classe no Python
       Funções do usuário padrão da Lanchonete.
@@ -6,8 +8,8 @@ class Usuario:
 
   # propriedades da classe (variáveis)
   # cadeia - string - str - "texto 1234" "1234"
-  loginInformado:str = "cliente"
-  senhaInformada:str = "1234"
+  loginInformado:str = None
+  senhaInformada:str = None
 
   # Array - matriz ou vetor nomeado
   dadosUsuario = {
@@ -29,7 +31,7 @@ class Usuario:
     # chamando o método logar da classe
     self.logar()
 
-  def logar ( self ):
+  def logar( self ):
 
     self.loginInformado = input( "Informe o login: " )
     self.senhaInformada = input( "Informe a senha: " )
@@ -37,7 +39,12 @@ class Usuario:
     # Comparação - Condicionais - Se - if
     # senão - else - falso
 
-    if self.loginInformado == self.dadosUsuario["loginArmazenado"] and self.senhaInformada == self.dadosUsuario["senhaArmazenada"]  :
+    # buscaremos os valores armazenados no Json usando o GravaDados.py
+    usuarioArmazenado = GravaDados()
+    
+    user = usuarioArmazenado.recuperaUsuario( self.loginInformado )      
+
+    if self.loginInformado == user["loginArmazenado"] and self.senhaInformada == user["senhaArmazenada"]  :
       
       self.tela.mensagensSistema( "Login bem sucedido!" )
       
