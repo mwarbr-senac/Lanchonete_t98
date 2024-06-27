@@ -32,12 +32,21 @@ class Usuario:
     self.logar()
 
   def logar( self ):
+    
+    self.loginInformado = input( "Informe o login ou 0 para sair: " )
 
-    self.loginInformado = input( "Informe o login: " )
-    self.senhaInformada = input( "Informe a senha: " )
+    # opção para sair do programa
+    if self.loginInformado == "0":
+      self.tela.saidaSistema()
+      return False
+    
+    else:
+      self.senhaInformada = input( "Informe a senha: " )
 
     # Comparação - Condicionais - Se - if
     # senão - else - falso
+
+    
 
     # buscaremos os valores armazenados no Json usando o GravaDados.py
     usuarioArmazenado = GravaDados()
@@ -48,7 +57,8 @@ class Usuario:
       
       self.tela.mensagensSistema( "Login bem sucedido!" )
       
-      self.tela.exibeMenu()
+      # enviando o nome do usuário para a tela
+      self.tela.exibeMenu( user["nomeUsuario"])
       
     else:
 

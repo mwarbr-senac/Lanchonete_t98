@@ -4,5 +4,7 @@
 # importação do Módulo Usuario e da classe
 from Modulos.Usuario import Usuario
 
+# loop que permanece ativo até o programa receber um break ou um erro
+# while True:    
 usuario = Usuario()
 

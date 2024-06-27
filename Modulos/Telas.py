@@ -5,6 +5,9 @@ import os
 class Telas:
     
     def entradaSistema( self ):
+        
+        self.limpaConsole()
+
         print( f"+--------------------------------------------------+" )
         print( f"|                                                  |" )
         print( f"|      ** Seja Bem Vindo ao Sistema **             |" )
@@ -26,6 +29,9 @@ class Telas:
         print( f"|      ** Obrigado por usar o Sistema **           |" )
         print( f"|                                                  |" )
         print( f"+--------------------------------------------------+" )
+
+        self.esperaLimpa()
+        return False
     
     def mensagensSistema( self, mensagem ):
         print( f"+--------------------------------------------------+" )
@@ -41,10 +47,16 @@ class Telas:
         else: 
             os.system( "clear" )
             
-    def exibeMenu( self ):
+    def exibeMenu( self, usuario ):
         print( f"+--------------------------------------------------+" )
-        print( f"|                            Bem Vindo { usuario } |" )
+        print( f"|   ** Bem Vindo { usuario }     " )
         print( f"|   ** Menu - Escolha uma Opção:                   |" )
         print( f"|   1 - Cadastrar                                  |" )
         print( f"|   2 - Listar                                     |" )
+        print( f"|   0 - Sair                                       |" )
         print( f"+--------------------------------------------------+" )
+
+        # convertemos para inteiro a string do input
+        escolha = int(input("Digite a sua escolha:"))
+
+        while True:
