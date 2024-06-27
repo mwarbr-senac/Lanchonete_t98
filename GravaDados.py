@@ -1,26 +1,24 @@
 import builtins
 import json # JavaScript Object Notation
-# importando o módulo de telas 
-from Modulos.Telas import Telas
+
 
 class GravaDados:
     
     # atributo/variável vazio (GLOBAL)
     usuariosJson = None
-    tela = Telas()
     
     def __init__(self):
         self.carregaJson()
     
     def carregaArquivo( self ):
         
-        with builtins.open( "C:\\Users\\maycon.aguerra\\Desktop\\Dev\\Lanchonete_t98\\textos.txt", "r" ) as dados:
+        with builtins.open( "textos.txt", "r" ) as dados:
             for linha in dados:
                 print( linha.rstrip() )
                 
     def carregaJson( self ):
         
-        with open( "C:\\Users\\maycon.aguerra\\Desktop\\Dev\\Lanchonete_t98\\usuarios.json", "r" ) as dados:
+        with open( "usuarios.json", "r" ) as dados:
             
             # recuperando os dados do JSON
             dadosJson = json.load( dados )
@@ -38,14 +36,16 @@ class GravaDados:
         usuariosCadastrados.append( novoUsuario )
 
         # abrir o arquivo Json e escreveros dados atualizados nele
-        with open( "C:\\Users\\maycon.aguerra\\Desktop\\Dev\\Lanchonete_t98\\usuarios.json", "w" ) as dados:
+        with open( "usuarios.json", "w" ) as dados:
             # coloca os dados em formato Json
-            json.dump( usuariosCadastrados, dados  )
+            json.dump( usuariosCadastrados, dados, indent=4  )
             # fecha o arquivo
             dados.close()
-
+            
+            #tela = Telas()
+            
             # exibir a tela da classe Telas()
-            self.tela.mensagensSistema( "Cadastro Realizado com sucesso!!" )
+            #tela.mensagensSistema( "Cadastro Realizado com sucesso!!" )
 
     def recuperaUsuario( self, buscar ):
         # busca o item do arquivo json escolhido
@@ -56,8 +56,29 @@ class GravaDados:
                 return item
             else:
                 # se não achou nada retorna a mensagem
-                self.tela.mensagensSistema("Nenhum usuário encontrado!")
+                print("Nenhum usuário encontrado!")
                 break
+            
+    def apagaUsuario( self, login ):
+        
+        dadosArmazenados = self.usuariosJson
+        
+        for i, item in enumerate( dadosArmazenados ):
+            if item["loginArmazenado"] == login:
+                del dadosArmazenados[i]
+                break
+            
+        with open( "usuarios.json", "w" ) as dados:
+            
+            json.dump( dadosArmazenados, dados )
+            
+            dados.close()
+            
+            print("Usuário apagado com sucesso!")
+            
+    def ordenaBusca( self, ordenarPor = "loginArmazenado", ordemReversa=False ):
+        
+        return sorted( self.usuariosJson, key=lambda item: item[ ordenarPor], reverse=ordemReversa )
 
 # teste = Testes()
 
